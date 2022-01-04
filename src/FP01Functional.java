@@ -12,18 +12,13 @@ public class FP01Functional {
 		//you can use also Arrays.asList
 	}
 
-	private static void print(int number) {
-		System.out.println(number);
-	}
-	private static void printAllNumbersInListFunctional(List<Integer> numbers) {
-//		for(int number:numbers) {
-//			System.out.println(number);
-//		}		
-		
-		
-		//we convert the array in a stream!
+	// to semplify the code	
+	// we have deleted our print method 
+	// and used the System.out.println() method directly in the for each
+	private static void printAllNumbersInListFunctional(List<Integer> numbers) {	
+		//we convert the array to a stream!
 		numbers.stream().
-		forEach(FP01Functional::print);
+		forEach(System.out::println);
 		//Method reference (nameOfTheClass::nameOfTheMethod)
 	}
 
