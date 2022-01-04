@@ -11,10 +11,13 @@ public class FP01Functional {
 		//printAllNumbersInListFunctional(numbers);
 		printEvenNumbersInListFunctional(numbers);
 	}
+
+// We are commenting out this method in order to semplify the code
+// we will use a lambda expression: a method in the filter method!
 	
-	private static boolean isEven(int number) {
-		return number%2 == 0;
-	}
+//	private static boolean isEven(int number) {
+//		return number%2 == 0;
+//	}
 
 
 	private static void printAllNumbersInListFunctional(List<Integer> numbers) {	
@@ -24,7 +27,8 @@ public class FP01Functional {
 	
 	private static void printEvenNumbersInListFunctional(List<Integer> numbers) {	
 		numbers.stream()
-		.filter(FP01Functional::isEven)	// Filter - only allow even numbers
+		//.filter(FP01Functional::isEven)	// Filter - only allow even numbers
+		.filter(number -> number%2 == 0 )	// Lambda expression
 		.forEach(System.out::println);
 	}
 
