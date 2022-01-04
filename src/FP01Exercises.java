@@ -20,11 +20,15 @@ public class FP01Exercises {
 		
 		System.out.println("\nExcercise4");
 		printAllCourseMoreThan4Letters(courses);
+		
+		System.out.println("\nExcercise5");
+		printTheCubeOfOddNumbers(numbers);
+		
+		System.out.println("\nExcercise6");
+		printLengthOfCoursesName(courses);
 	}
 	
-	
-	
-	
+
 
 
 	private static void printOddNumbersInListFunctional(List<Integer> numbers) {	
@@ -51,6 +55,21 @@ public class FP01Exercises {
 		.forEach(System.out::println);
 	}
 	
+	private static void printTheCubeOfOddNumbers(List<Integer> numbers) {
+		numbers.stream()
+		.filter(number -> number%2 != 0 )
+		.map(number -> number * number * number)
+		.forEach(System.out::println);		
+	}
+	
+	
+	private static void printLengthOfCoursesName(List<String> courses) {
+		courses.stream()
+		.map(course -> course + " " + course.length())
+		.forEach(System.out::println);
+		
+	}
+
 	
 
 }
