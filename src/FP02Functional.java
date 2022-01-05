@@ -38,6 +38,7 @@ public class FP02Functional {
 	//	We can use reduce to find the maximum value
 	// 	to work with negative numbers too
 	// 	we have to change the start value from 0 to Integer.MIN_VALUE
+	//	the same logic with the minimum value 
 	
 	
 	private static int addListStructured(List<Integer> numbers) {
@@ -48,7 +49,9 @@ public class FP02Functional {
 		return numbers.stream()
 		//.reduce(0, FP02Functional::sum );
 		//.reduce(0, (x,y) -> x + y );
-		.reduce(Integer.MIN_VALUE, (x,y)-> x>y ? x : y );
+		//.reduce(Integer.MIN_VALUE, (x,y)-> x>y ? x : y );
+		.reduce(Integer.MAX_VALUE, (x,y)-> x<y ? x : y );
+	
 		
 	}
 	
