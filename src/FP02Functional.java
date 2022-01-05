@@ -9,8 +9,8 @@ public class FP02Functional {
 	public static void main(String[] args) {
 		List<Integer> numbers = List.of(23,12,5,14,11,24,18,9,5);
 		
-		int sum = addListStructured(numbers);
-		System.out.println(sum);
+		int min = findMinimumValue(numbers);
+		System.out.println(min);
 	}
 	
 //	private static int sum (int aggregate, int nextNumber) {
@@ -41,7 +41,7 @@ public class FP02Functional {
 	//	the same logic with the minimum value 
 	
 	
-	private static int addListStructured(List<Integer> numbers) {
+	private static int findMinimumValue(List<Integer> numbers) {
 		
 		// reduce: from a stream of number to a single value, one result
 		// two argument the accumulator and the operation
