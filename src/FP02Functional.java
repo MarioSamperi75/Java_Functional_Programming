@@ -35,7 +35,7 @@ public class FP02Functional {
 
 	
 	
-	//instead of the sum method we can easuly use a lambda expression!
+	//	we can also use an existing Integer method
 	private static int addListStructured(List<Integer> numbers) {
 		
 		// reduce: from a stream of number to a single value, one result
@@ -43,7 +43,9 @@ public class FP02Functional {
 		// we have to add the starting value of the accumulator as first argument
 		return numbers.stream()
 		//.reduce(0, FP02Functional::sum );
-		.reduce(0, (x,y) -> x + y );
+		//.reduce(0, (x,y) -> x + y );
+		.reduce(0, Integer::sum);
+		
 	}
 	
 }
