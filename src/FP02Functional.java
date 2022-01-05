@@ -35,7 +35,10 @@ public class FP02Functional {
 
 	
 	
-	//	we can also use an existing Integer method
+	//	We can use reduce to find the maximum value
+	// 	the aggregate (accumulator) is just the result of the last operation
+	// 	but the operation have not to be a sum
+	// 	in this case is just an if 
 	private static int addListStructured(List<Integer> numbers) {
 		
 		// reduce: from a stream of number to a single value, one result
@@ -44,7 +47,7 @@ public class FP02Functional {
 		return numbers.stream()
 		//.reduce(0, FP02Functional::sum );
 		//.reduce(0, (x,y) -> x + y );
-		.reduce(0, Integer::sum);
+		.reduce(0, (x,y)-> x>y ? x : y );
 		
 	}
 	
