@@ -13,9 +13,24 @@ public class FP02Functional {
 		System.out.println(sum);
 	}
 	
-	private static int sum (int a, int b) {
-		int sum = a + b;
+	private static int sum (int aggregate, int nextNumber) {
+		System.out.println(aggregate + " " + nextNumber);
+		int sum = aggregate + nextNumber;
 		return sum;
+		
+//	This is the result of the sysout,
+// it's easy to understand how the accumulator works
+		
+//		0 23
+//		23 12
+//		35 5
+//		40 14
+//		54 11
+//		65 24
+//		89 18
+//		107 9
+//		116 5
+//		121
 	}
 
 	private static int addListStructured(List<Integer> numbers) {
