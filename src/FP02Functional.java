@@ -13,10 +13,10 @@ public class FP02Functional {
 		System.out.println(sum);
 	}
 	
-	private static int sum (int aggregate, int nextNumber) {
-		System.out.println(aggregate + " " + nextNumber);
-		int sum = aggregate + nextNumber;
-		return sum;
+//	private static int sum (int aggregate, int nextNumber) {
+//		System.out.println(aggregate + " " + nextNumber);
+//		int sum = aggregate + nextNumber;
+//		return sum;
 		
 //	This is the result of the sysout,
 // it's easy to understand how the accumulator works
@@ -31,26 +31,19 @@ public class FP02Functional {
 //		107 9
 //		116 5
 //		121
-	}
+//	}
 
+	
+	
+	//instead of the sum method we can easuly use a lambda expression!
 	private static int addListStructured(List<Integer> numbers) {
 		
 		// reduce: from a stream of number to a single value, one result
 		// two argument the accumulator and the operation
 		// we have to add the starting value of the accumulator as first argument
 		return numbers.stream()
-		.reduce(0, FP02Functional::sum );
-		
-		
-//		int sum = 0;
-//		for (int number:numbers) {
-//			sum += number;
-//		}
-//		return sum;
+		//.reduce(0, FP02Functional::sum );
+		.reduce(0, (x,y) -> x + y );
 	}
-
-
-				
 	
-
 }
