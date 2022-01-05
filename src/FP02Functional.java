@@ -1,5 +1,10 @@
 // use collect(Collectors.toList()) to create a new list from an existing one
 
+// stream operations summary:
+// itemediate operations - takes a stream and returns a stream - map, filter, sorted, distinct
+// terminal operation - takes a stream and returns something different - forEach, reduce, collect
+
+
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
