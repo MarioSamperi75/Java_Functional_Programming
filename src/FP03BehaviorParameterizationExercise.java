@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class FP03BehaviorParameterizationExercise {
 
@@ -10,56 +12,16 @@ public class FP03BehaviorParameterizationExercise {
 		
 		List<Integer> numbers = List.of(12, 9, 13, 4, 6, 2, 4, 12, 15);
 		
-		System.out.println("\neven numbers");
-		numbers.stream()
-		.filter(x->x%2==0)
-		.forEach(System.out::println);
 		
+		List<Integer> add2List = mapToList(numbers, x->x+2);
+		List<Integer> cubesList = mapToList(numbers, x->x*x*x);
 		
-		System.out.println("\nodd numbers");
-		numbers.stream()
-		.filter(x->x%2!=0)
-		.forEach(System.out::println);
-		
-		//  to create a single method that has as parameters the logic, the behavior (and the numbers of course)
-		// 	how to add the specific operation you have to perform AS ARGUMENT in the call?
-		// ----> behavior parameterisaton
-		
-		
-		
-		Predicate<? super Integer> oddPredicate = x->x%2!=0;
-		
-		Predicate<? super Integer> evenPredicate = x->x%2==0;
-		
-		
-		System.out.println("\neven numbers");
-		filterAndPrint(numbers,evenPredicate);
-		
-		System.out.println("\nodd numbers");
-		filterAndPrint(numbers, oddPredicate);
-		
-		
-		// now we can also create our specific predicate just inline (with a lambda!)
-		
-		System.out.println("\ndivisible by three");
-		filterAndPrint(numbers, x->x%3==0);
-		
-
+		System.out.println(add2List);
+		System.out.println(cubesList);
 	}
 
-	private static void filterAndPrint(List<Integer> numbers, Predicate<? super Integer> predicate) {
-		numbers.stream()
-		.filter(predicate)
-		.forEach(System.out::println);
+	private static List<Integer> mapToList(List<Integer> numbers, Function<? super Integer, ? extends Integer> function) {
+		return numbers.stream().map(function) .collect(Collectors.toList());
 	}
-		
-		
-		
-	
-	
 
-	
-	
-	
-	
 }
