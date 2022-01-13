@@ -105,7 +105,8 @@ public class FP04CustomClass {
 		
 		// sorting items with sorted and comparator
 		
-		//we can actually use comparingInt in all these cases because it's more efficient
+		// we can actually use comparingInt in all these cases because it's more efficient
+		// there is a specific method for all the primitive types
 		Comparator <Course> comparingByNoOfStudentsComparatorIncreasing = Comparator.comparing(Course::getNoOfStudents);
 		Comparator <Course> comparingByNoOfStudentsComparatorDecreasing = Comparator.comparing(Course::getNoOfStudents).reversed();
 		
@@ -116,13 +117,55 @@ public class FP04CustomClass {
 				courses.stream().sorted(comparingByNoOfStudentsComparatorDecreasing).collect(Collectors.toList()));
 		
 		// to steps sorting
-		
+		// example of comparingInt
 		Comparator <Course> comparingByNoOfStudentsComparatorIncreasingAndReviewScore = 
 				Comparator.comparingInt(Course::getNoOfStudents)
 				.thenComparingInt(Course::getReviewScore).reversed();
 		
 		System.out.println(
 				courses.stream().sorted(comparingByNoOfStudentsComparatorIncreasingAndReviewScore).collect(Collectors.toList()));
+		
+		// limit - skip - takeWhile - dropWhile
+		
+		// we want to limit the list to the first 5 items
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				.limit(5)
+				.collect(Collectors.toList()));
+		
+		// We want to skip the first three and show the others
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				.skip(3)
+				.collect(Collectors.toList()));
+		
+		// Of course we can combine skip and limit
+		System.out.println(
+				courses.stream()
+				.sorted(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				.skip(3)
+				.limit(1)
+				.collect(Collectors.toList()));
+		
+		// takeWhile: we want to list all the courses while a condition occurs
+		// e.g all the course while the review score is >= 95 (96 excluded).
+		
+		System.out.println(
+				courses.stream()
+				.takeWhile(course -> course.getReviewScore() >= 95)
+				.collect(Collectors.toList()));
+		
+		// the opposit is dropWhile (to skip depending of a condition)
+		System.out.println(
+				courses.stream()
+				.dropWhile(course -> course.getReviewScore() >= 95)
+				.collect(Collectors.toList()));
+		
+		
+			
+		
 	
 	
 		
