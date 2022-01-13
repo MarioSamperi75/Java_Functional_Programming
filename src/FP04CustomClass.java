@@ -1,5 +1,7 @@
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 class Course {
 	
@@ -100,6 +102,28 @@ public class FP04CustomClass {
 		
 		System.out.println(
 				courses.stream().anyMatch(reviewScoreBiggerThan95));	
+		
+		// sorting items with sorted and comparator
+		
+		//we can actually use comparingInt in all these cases because it's more efficient
+		Comparator <Course> comparingByNoOfStudentsComparatorIncreasing = Comparator.comparing(Course::getNoOfStudents);
+		Comparator <Course> comparingByNoOfStudentsComparatorDecreasing = Comparator.comparing(Course::getNoOfStudents).reversed();
+		
+		System.out.println(
+				courses.stream().sorted(comparingByNoOfStudentsComparatorIncreasing).collect(Collectors.toList()));
+
+		System.out.println(
+				courses.stream().sorted(comparingByNoOfStudentsComparatorDecreasing).collect(Collectors.toList()));
+		
+		// to steps sorting
+		
+		Comparator <Course> comparingByNoOfStudentsComparatorIncreasingAndReviewScore = 
+				Comparator.comparingInt(Course::getNoOfStudents)
+				.thenComparingInt(Course::getReviewScore).reversed();
+		
+		System.out.println(
+				courses.stream().sorted(comparingByNoOfStudentsComparatorIncreasingAndReviewScore).collect(Collectors.toList()));
+	
 	
 		
 
