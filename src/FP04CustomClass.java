@@ -1,6 +1,7 @@
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 class Course {
@@ -275,7 +276,36 @@ public class FP04CustomClass {
 				); //OptionalInt[25000]
 		
 		
+		//groupingBy - List of courses by category
+		System.out.println(
+				courses.stream()
+				.collect(Collectors.groupingBy(Course::getCategory))
+				);
 
+		//groupingBy - Number of courses by category
+		System.out.println(
+				courses.stream()
+				.collect(Collectors.groupingBy(Course::getCategory, Collectors.counting()))
+				); // {Cloud=4, Fullstack=1, Microservices=2, Framework=2}
+		
+		
+		//groupingBy - In every category, Select Just the course having the higher
+		System.out.println(
+				courses.stream()
+				.collect(Collectors.groupingBy(Course::getCategory, 
+						Collectors.maxBy(Comparator.comparing(Course::getReviewScore))))
+				); 	//{Cloud=Optional[Course [name=Azure, category=Cloud, reviewScore=99, noOfStudents=21000]], 
+					//Fullstack=Optional[Course [name=Fullstack, category=Fullstack, reviewScore=91, noOfStudents=14000]], 
+					//Microservices=Optional[Course [name=API, category=Microservices, reviewScore=97, noOfStudents=22000]], 
+					//Framework=Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfStudents=20000]]}
+		
+		
+		//groupingBy - List of courses by category - Just the name
+		System.out.println(
+				courses.stream()
+				.collect(Collectors.groupingBy(Course::getCategory,
+						Collectors.mapping(Course::getName, Collectors.toList())))
+				);
 		
 
 	}
