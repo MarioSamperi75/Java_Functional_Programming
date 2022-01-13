@@ -230,9 +230,52 @@ public class FP04CustomClass {
 				.findFirst()
 				); //Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfStudents=20000]]
 			
+
+		// sum - average
 		
-	
-	
+		// sum: exercise - get the total nuber of students in all those courses having reviewScore > 95
+		System.out.println(		
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.mapToInt(Course::getNoOfStudents)
+				.sum()
+				); //88000
+		
+		// average: exercise - get the average of students in all those courses having reviewScore > 95	
+		System.out.println(		
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.mapToInt(Course::getNoOfStudents)
+				.average()
+				); //OptionalDouble[22000.0]
+		
+		// count: exercise - get the total of courses that meet the criteria  reviewScore > 95	
+		System.out.println(		
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.mapToInt(Course::getNoOfStudents)
+				.count()
+				); //4
+		
+		// max: exercise - get the maximum value of number of students in all the courses having  reviewScore > 95	
+		System.out.println(		
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.mapToInt(Course::getNoOfStudents)
+				.max()
+				); //OptionalInt[25000]
+		
+		
+		// min: exercise - get the MINIMUM value of number of students in all the courses having  reviewScore > 95	
+		System.out.println(		
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.mapToInt(Course::getNoOfStudents)
+				.min()
+				); //OptionalInt[25000]
+		
+		
+
 		
 
 	}
