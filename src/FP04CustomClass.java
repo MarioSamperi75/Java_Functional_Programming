@@ -164,6 +164,71 @@ public class FP04CustomClass {
 				.collect(Collectors.toList()));
 		
 		
+		// max & min
+		
+		
+		// max returns the last element in the list
+		System.out.println(
+				courses.stream()
+				.max(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				);
+		
+		// min returns the first element in the list
+		System.out.println(
+				courses.stream()
+				.min(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				);
+		
+		
+		// we get actually an Optional, what does it means?
+		// we will use filter wiht a predicate that give us no results
+		
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreLessThan90)
+				.min(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				);
+		// we get Optional.empty
+		// It's just a way to avoid the nullPoiterException in Java
+		
+		
+		// You can also use orElse to set a default result in case of null
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreLessThan90)
+				.min(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				.orElse(new Course("Origami from 0 to Hero", "Bonus Course", 99, 30000))
+				);
+		
+		// without filter we get the first course - that exists-  and not the default
+		System.out.println(
+				courses.stream()
+				.min(comparingByNoOfStudentsComparatorIncreasingAndReviewScore)
+				.orElse(new Course("Origami from 0 to Hero", "Bonus Course", 99, 30000))
+				);
+		
+		
+		// finding the first element that meets a specific criteria
+		
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreLessThan90)
+				.findFirst()
+				); //Optional.empty
+		
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.findFirst()
+				); //Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfStudents=20000]]
+		
+		// finding ONE element that meets a specific criteria. it can be a different value than findFirst 
+		// (but just in certain condition, otherwise is the same result)
+		System.out.println(
+				courses.stream()
+				.filter(reviewScoreBiggerThan95)
+				.findFirst()
+				); //Optional[Course [name=Spring, category=Framework, reviewScore=98, noOfStudents=20000]]
 			
 		
 	
