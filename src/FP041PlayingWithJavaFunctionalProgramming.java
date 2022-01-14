@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class FP041PlayingWithJavaFunctionalProgramming {
@@ -64,6 +66,38 @@ public class FP041PlayingWithJavaFunctionalProgramming {
 		System.out.println(Arrays.stream(numberArray).count());
 		System.out.println(Arrays.stream(numberArray).max());
 		System.out.println(Arrays.stream(numberArray).min());
+		
+		// create a stream dinamically: IntStream and its operations
+		
+		// range
+		System.out.println(IntStream.range(0, 10));					//java.util.stream.IntPipeline$Head@7530d0a
+		System.out.println(IntStream.range(0, 10).sum());			//45   (10 is excluded)
+		System.out.println(IntStream.rangeClosed(0, 10).sum());		//55   (10 is included)
+		
+		//iterate to specify an algorithm
+		System.out.println(IntStream.iterate(1, e -> e + 2).limit(10).sum());
+		
+		
+		// iterate to specify an algorithm
+		// peek allow to apply an action to every element
+		// we are peeking the first 10 odd number
+		System.out.println(IntStream.iterate(1, e -> e + 2).limit(10).peek(System.out::println).sum());
+		
+		
+		// we are peeking the first 10 even number
+		System.out.println(IntStream.iterate(2, e -> e + 2).limit(10).peek(System.out::println).sum());
+		
+		// sowing the first 10 power of two
+		System.out.println(IntStream.iterate(2, e -> e * 2).limit(10).peek(System.out::println).sum());
+		
+		// creating a List from a primitive stream	
+		// remember to box the primitive list (we cant use int but Integer!)
+		System.out.println(IntStream.iterate(2, e -> e * 2).limit(10).boxed().collect(Collectors.toList()));
+		
+		//we can perform the same operations with DoubleStream, LongStream and so on
+		
+		
+		
 		
 		
 		
