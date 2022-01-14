@@ -1,7 +1,9 @@
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class FP041PlayingWithJavaFunctionalProgramming {
@@ -97,9 +99,26 @@ public class FP041PlayingWithJavaFunctionalProgramming {
 		//we can perform the same operations with DoubleStream, LongStream and so on
 		
 		
+		// Using BigInteger
+		
+		// Limit for Integer
+		System.out.println(Integer.MAX_VALUE);
+		
+		//Limit for Long
+		System.out.println(Long.MAX_VALUE);
+		
+		//this operation doesn't exceed the limit
+		System.out.println(LongStream.rangeClosed(1,20).reduce(1, (x,y) -> x*y));
+		
+		// This operation exceed the limit : we need BigInteger class!
+		System.out.println(LongStream.rangeClosed(1,50).reduce(1, (x,y) -> x*y));
+		
+		// we needs to map to an object an create a big integer value
+		System.out.println(LongStream.rangeClosed(1,50).mapToObj(BigInteger::valueOf).reduce(BigInteger.ONE, BigInteger::multiply));
 		
 		
 		
+				
 		
 	}
 	
