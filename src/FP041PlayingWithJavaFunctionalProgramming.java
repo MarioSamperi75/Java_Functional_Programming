@@ -116,12 +116,6 @@ public class FP041PlayingWithJavaFunctionalProgramming {
 		// we needs to map to an object an create a big integer value
 		System.out.println(LongStream.rangeClosed(1,50).mapToObj(BigInteger::valueOf).reduce(BigInteger.ONE, BigInteger::multiply));
 		
-		
-		
-				
-		
 	}
-	
-	
 
 }
