@@ -326,5 +326,4 @@ public class FP04CustomClass {
 	private static Predicate<? super Course> createPredicateWithReviewScore(int reviewScore) {
 		return course -> course.getReviewScore() > reviewScore;
 	}
-
 }
