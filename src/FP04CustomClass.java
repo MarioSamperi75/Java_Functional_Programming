@@ -305,7 +305,7 @@ public class FP04CustomClass {
 				courses.stream()
 				.collect(Collectors.groupingBy(Course::getCategory,
 						Collectors.mapping(Course::getName, Collectors.toList())))
-				);
+				); //{Cloud=[AWS, Azure, Docker, Kubernetes], Fullstack=[Fullstack], Microservices=[API, Microservices], Framework=[Spring, Spring Boot]}
 		
 
 	}
