@@ -17,7 +17,6 @@ class Course {
 	}
 	
 	
-	
 	public Course(String name, String category, int reviewScore, int noOfStudents) {
 		super();
 		this.name = name;
@@ -54,8 +53,6 @@ class Course {
 		return "Course [name=" + name + ", category=" + category + ", reviewScore=" + reviewScore + ", noOfStudents="
 				+ noOfStudents + "]";
 	}
-	
-	
 	
 }
 
@@ -308,6 +305,26 @@ public class FP04CustomClass {
 				); //{Cloud=[AWS, Azure, Docker, Kubernetes], Fullstack=[Fullstack], Microservices=[API, Microservices], Framework=[Spring, Spring Boot]}
 		
 
+		
+		// High Order function: function that returns a function
+		// It is possible by returning a Predicate
+	
+		
+		//Predicate<? super Course> reviewScoreBiggerThan90 = course -> course.getReviewScore() > 90;
+
+		//Predicate<? super Course> reviewScoreBiggerThan95 = course -> course.getReviewScore() > 95;
+	
+		
+		// these predicate are the same, it's just a different value
+		// we can create a function that has the value as parameter and that returns the Predicate
+		
+		Predicate<? super Course> reviewScoreBiggerThan90_2 = createPredicateWithReviewScore(90);
+		
+		Predicate<? super Course> reviewScoreBiggerThan95_2 = createPredicateWithReviewScore(95);
+	}
+
+	private static Predicate<? super Course> createPredicateWithReviewScore(int reviewScore) {
+		return course -> course.getReviewScore() > reviewScore;
 	}
 
 }
